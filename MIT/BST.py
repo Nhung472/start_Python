@@ -30,4 +30,4 @@ r = insert(r, 7)
 r = insert(r, 8)
 r = insert(r, 3)
 
-inorder(r)
+inorder(r)	
