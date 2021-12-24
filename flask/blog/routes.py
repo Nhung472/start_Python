@@ -1,15 +1,7 @@
-from enum import unique
-from flask import Flask, render_template, url_for, flash, redirect
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import backref
-from forms import RegistrationForm, LoginForm
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'cb364e81ed836bb9769e7fb78dbd6ec1'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sql:///site.db'
-db = SQLAlchemy(app)
-
-from models import User, Post
+from flask import render_template, url_for, flash, redirect
+from flask import app 
+from flask.models import User, Post
+from flask.forms import RegistrationForm, LoginForm
 
 posts = [
     {
@@ -53,6 +45,3 @@ def login():
         else:
             flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', title='Login', form=form)
-
-if __name__ == '__main__':
-    app.run(debug=True)
